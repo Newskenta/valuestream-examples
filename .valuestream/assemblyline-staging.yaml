@@ -11,9 +11,9 @@ spec:
   stages:
     - name: deploy
       spec:
-        pipeline: nginx-demo-deploy
+        pipeline: nginx-demo-azure-deploy
         deployment:
-          app: nginx-demo
+          app: nginx-demo-azure
           name: staging
         params:
           - name: gitRevision
@@ -22,9 +22,9 @@ spec:
             value: $(inputs.imageName)
     - name: resolve-ip-address
       spec:
-        pipeline: nginx-demo-resolve-ip-address-after-deploy
+        pipeline: nginx-demo-azure-resolve-ip-address-after-deploy
         deployment:
-          app: nginx-demo
+          app: nginx-demo-azure
           name: staging
       runAfter:
         - deploy
